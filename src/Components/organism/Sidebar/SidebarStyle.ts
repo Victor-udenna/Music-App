@@ -30,8 +30,9 @@ const SidebarStyle = styled.div`
       border-radius: 50%;
     }
 
-    .user-name{
-    font-family: 'Inter', sans-serif;
+    .user-name {
+      font-family: 'Inter', sans-serif;
+      color: #ffff;
     }
   }
 
