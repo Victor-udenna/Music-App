@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import Colors from '../../../helpers/Colors'
 
 const SidebarStyle = styled.div`
   min-height: 100vh;
@@ -7,7 +8,7 @@ const SidebarStyle = styled.div`
   .sidebar {
     background-color: #574fd8;
     min-height: 100vh;
-    padding: 2rem 0rem;
+    padding: 2.3rem 0rem;
     position: fixed;
     width: 15%;
   }
@@ -18,18 +19,24 @@ const SidebarStyle = styled.div`
 
   .sidebar-menu__img {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
+    gap: 12px;
+    margin-bottom: 4rem;
 
     img {
       width: 50px;
       height: 50px;
       border-radius: 50%;
     }
+
+    .user-name{
+    font-family: 'Inter', sans-serif;
+    }
   }
 
   .sidebar-menu {
-    background-color: #574fd8;
+    background-color: ${Colors.brand};
     a {
       color: #ffff;
       text-decoration: none;
@@ -58,12 +65,18 @@ const SidebarStyle = styled.div`
       width: 20%;
     }
     .sidebar-menu__img {
+      margin-top: 1.5rem;
       img {
         width: 27px;
         height: 27px;
         border-radius: 50%;
       }
     }
+
+    .user-name {
+      display: none;
+    }
+
     .sidebar-menu__item {
       justify-content: center;
       align-items: center;
