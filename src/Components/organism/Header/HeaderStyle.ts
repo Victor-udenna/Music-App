@@ -3,6 +3,7 @@ import Colors from '../../../helpers/Colors'
 
 const HeaderStyle = styled.div`
   background-color: ${Colors.header};
+  width: 100%;
   .hero {
     background-image: url('../../../assets/images/hero.svg');
     background-size: 30%;

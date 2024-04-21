@@ -11,6 +11,8 @@ const SidebarStyle = styled.div`
     padding: 2.3rem 0rem;
     position: fixed;
     width: 15%;
+    top: 0;
+    bottom: 0;
   }
 
   .sidebar-menu_container {
@@ -25,8 +27,8 @@ const SidebarStyle = styled.div`
     margin-bottom: 4rem;
 
     img {
-      width: 50px;
-      height: 50px;
+      width: 60px;
+      height: 60px;
       border-radius: 50%;
     }
 

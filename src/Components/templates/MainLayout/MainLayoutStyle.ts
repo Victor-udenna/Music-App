@@ -12,7 +12,11 @@ const MainlayoutStyle = styled.div`
   }
 
   .mainlayout__body {
-    background: white;
+    overflow-y: hidden;
+    overflow-x: hidden;
+    width: fit-content;
+    position: relative;
+    /* width: 100%; */
   }
 
   @media screen and (max-width: 600px) {
