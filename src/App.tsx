@@ -10,33 +10,6 @@ function App() {
 
   const queryClient = new QueryClient()
 
-  // const [tracks, setTracks] = useState([]);
-  // useEffect(() => {
-  //   const fetchTracks = async () => {
-  //     const options = {
-  //       method: 'GET',
-  //       url: 'https://deezerdevs-deezer.p.rapidapi.com/search',
-  //       params: {q: 'eminem'},
-  //       headers: {
-  //         'X-RapidAPI-Key': '5312ed048amsh03ba71e9c5ebb31p10336djsnc538ae0495e9',
-  //         'X-RapidAPI-Host': 'deezerdevs-deezer.p.rapidapi.com'
-  //       }
-  //     };
-
-  //     try {
-  //       const response = await axios.request(options);
-  //       console.log(response.data);
-  //       setTracks(response.data)
-  //     } catch (error) {
-  //       console.error(error);
-  //     }
-  //   };
-
-  //   fetchTracks();
-  // }, []);
-
-  // console.node -vlog(tracks)
-
   return (
     <>
 <QueryClientProvider client={queryClient}>

@@ -15,7 +15,6 @@ const MainlayoutStyle = styled.div`
     overflow-y: hidden;
     overflow-x: hidden;
     position: relative;
-    /* width: 100%; */
   }
 
   @media screen and (max-width: 600px) {
