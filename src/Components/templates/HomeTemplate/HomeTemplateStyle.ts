@@ -1,6 +1,8 @@
 import styled from 'styled-components'
 const HomeTemplateStyle = styled.div`
-padding: 10px;
+padding: 12rem 24px 24px 24px;
+
+
 
 @media (prefers-color-scheme: dark) {
     color: rgba(255, 255, 255, 0.87);
@@ -18,6 +20,10 @@ padding: 10px;
     background-color: #ffffff;
   }
   
+}
+
+@media screen and (max-width: 600px) {
+  padding: 8rem 24px 24px 24px;
 }
 
 `

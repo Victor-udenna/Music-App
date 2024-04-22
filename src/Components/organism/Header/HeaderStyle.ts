@@ -3,7 +3,7 @@ import Colors from '../../../helpers/Colors'
 
 const HeaderStyle = styled.div`
   background-color: ${Colors.header};
-  width: 100%;
+
   .hero {
     background-image: url('../../../assets/images/hero.svg');
     background-size: 30%;
@@ -11,6 +11,11 @@ const HeaderStyle = styled.div`
     background-repeat: no-repeat;
     transform: rotateY(180deg);
     padding: 2.7rem;
+    position: fixed;
+    top: 0px;
+    right: 0px;
+    width: 85%;
+    background-color: ${Colors.header};
 
     .hero-header__text {
       transform: rotateY(-180deg);
@@ -40,6 +45,8 @@ const HeaderStyle = styled.div`
 
   @media screen and (max-width: 600px) {
     .hero {
+      width: 80%;
+      right: 0px;
       background-size: 0px;
       padding: 28px;
       .hero-header__text {

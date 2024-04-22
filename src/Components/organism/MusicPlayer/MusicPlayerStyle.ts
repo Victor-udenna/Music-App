@@ -2,19 +2,6 @@ import styled from 'styled-components'
 import Colors from '../../../helpers/Colors'
 
 const MusicPlayerStyle = styled.div`
-  @media (prefers-color-scheme: dark) {
-    color: rgba(255, 255, 255, 0.87);
-    background-color: #242424;
-    font-synthesis: none;
-    text-rendering: optimizeLegibility;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
-
-  @media (prefers-color-scheme: light) {
-    color: #213547;
-    background-color: #ffffff;
-  }
 
   .music-player {
     display: flex;
@@ -25,6 +12,7 @@ const MusicPlayerStyle = styled.div`
     padding: 1.5rem 2rem;
     position: fixed;
     bottom: 0px;
+    right: 0px;
     width: fit-content;
     width: 85%;
     @media (prefers-color-scheme: dark) {
@@ -91,8 +79,35 @@ const MusicPlayerStyle = styled.div`
     width: 60%;
   }
 
+  .music__seek__container input[type="range"] {
+    width: 100%;
+    height: 8px;
+    background-color: transparent;
+     outline: none;
+     -webkit-appearance: none;
+    appearance: none; 
+
+    &::-webkit-slider-runnable-track {
+      background-color: ${Colors.neutral};
+      border-radius: 10px;
+      height: 8px;
+    }
+
+    &::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 11px;
+      height: 11px;
+      margin-top: -1.2px;
+      background-color: ${Colors.brand};
+      
+      border-radius: 50%;
+      cursor: pointer;
+    }
+  }
+
   .music__seek__container input[type='range'] {
-    width: 100%; /* Set width to 100% */
+    width: 100%; 
     height: 8px;
   }
 

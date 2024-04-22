@@ -14,7 +14,6 @@ const MainlayoutStyle = styled.div`
   .mainlayout__body {
     overflow-y: hidden;
     overflow-x: hidden;
-    width: fit-content;
     position: relative;
     /* width: 100%; */
   }

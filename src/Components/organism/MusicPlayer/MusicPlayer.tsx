@@ -1,6 +1,7 @@
+import { useState, useRef } from 'react'
 import MusicPlayerStyle from './MusicPlayerStyle'
-// import audioSample from '../../../assets/So-Will-I-100-Billion-X-Hillsong-Worship.mp3'
-import staticImg from '../../../assets/There_Is_More_by_Hillsong_Worship_(Official_Album_Cover).jpg'
+import audioSample from '../../../assets/So-Will-I-100-Billion-X-Hillsong-Worship.mp3'
+import staticImg from '../../../assets/images/Solid Mid Grey.jpg'
 import Img from '../../atoms/Image/Img'
 import Text from '../../atoms/Text/Text'
 import { FaStepForward } from 'react-icons/fa'
@@ -10,17 +11,74 @@ import { LuRepeat2 } from 'react-icons/lu'
 import { PiSpeakerSimpleLowFill } from 'react-icons/pi'
 import { IoMdHeart } from 'react-icons/io'
 import { FaPlay } from 'react-icons/fa'
-// import { FaPause } from 'react-icons/fa'
-// import { PiSpeakerSimpleXFill } from "react-icons/pi";
-import { HiDotsHorizontal } from "react-icons/hi";
+import { FaPause } from 'react-icons/fa'
+import { PiSpeakerSimpleXFill } from 'react-icons/pi'
+import { HiDotsHorizontal } from 'react-icons/hi'
+import Colors from '../../../helpers/Colors'
+// import axios from 'axios'
+// import { useEffect } from 'react'
 
 const MusicPlayer = () => {
+  const audioRef = useRef<any | null>(null)
+  const [isPlaying, setIsPlaying] = useState(false)
+  const [currentTime, setCurrentTime] = useState(0)
+  const [isMuted, setIsMuted] = useState(false)
+
+  const togglePlay = () => {
+    if (isPlaying) {
+      audioRef.current.pause()
+    } else {
+      audioRef.current.play()
+    }
+    setIsPlaying(!isPlaying)
+  }
+
+  const handleSeek = (e: any) => {
+    const newTime = parseFloat(e.target.value)
+    setCurrentTime(newTime)
+    audioRef.current.currentTime = newTime
+  }
+
+  const toggleMute = () => {
+    audioRef.current.muted = !isMuted;
+    setIsMuted(!isMuted);
+  };
+  // const getSong = async ()=>{
+  //   const options = {
+  //     method: 'GET',
+  //     url: 'https://deezerdevs-deezer.p.rapidapi.com/search',
+  //     params: {
+  //       q: 'anendlessocean'
+  //     },
+  //     headers: {
+  //       'X-RapidAPI-Key': '5312ed048amsh03ba71e9c5ebb31p10336djsnc538ae0495e9',
+  //       'X-RapidAPI-Host': 'deezerdevs-deezer.p.rapidapi.com'
+  //     }
+  //   };
+
+  //   try {
+  //     const response = await axios.request(options);
+  //     console.log(response.data);
+  //   } catch (error) {
+  //     console.error(error);
+  //   }
+  // }
+
+  // useEffect(()=>{
+  // getSong()
+  // }, [])
+
   return (
     <MusicPlayerStyle>
       {/* <audio controls>
         <source src={audioSample} />
       </audio> */}
       <div className="music-player">
+        <audio
+          ref={audioRef}
+          src={audioSample}
+          onTimeUpdate={() => setCurrentTime(audioRef.current.currentTime)}
+        />
         <div className="music__functionality">
           <div className="controls-container control-header">
             <Img className="coverimg" image={staticImg} />
@@ -31,8 +89,8 @@ const MusicPlayer = () => {
             <button className="backfront-btn fwd-btn">
               <FaStepBackward size={18} />
             </button>
-            <button className="playpause-btn">
-              <FaPlay size={20} />
+            <button onClick={togglePlay} className="playpause-btn">
+              {isPlaying ? <FaPause size={20} /> : <FaPlay size={20} />}
             </button>
             <button className="backfront-btn back-btn">
               <FaStepForward size={18} />
@@ -41,7 +99,14 @@ const MusicPlayer = () => {
         </div>
 
         <div className="music__seek__container">
-          <input className='seek' type="range" min="0" max={10} />
+          <input
+            className="seek"
+            type="range"
+            min="0"
+            max={audioRef.current ? audioRef.current.duration : 0}
+            value={currentTime}
+            onChange={handleSeek}
+          />
         </div>
 
         <div className="multi__control">
@@ -54,12 +119,18 @@ const MusicPlayer = () => {
           <button>
             <LuRepeat2 size={18} />
           </button>
-          <button>
-            <PiSpeakerSimpleLowFill size={18} />
+          <button onClick={toggleMute}>
+            {isMuted ? (
+              <PiSpeakerSimpleXFill size={18} color={Colors.brand} />
+            ) : (
+              <PiSpeakerSimpleLowFill size={18} />
+            )}
           </button>
         </div>
 
-        <button className='toggle-func_btn'><HiDotsHorizontal size={18}/></button>
+        <button className="toggle-func_btn">
+          <HiDotsHorizontal size={18} />
+        </button>
       </div>
     </MusicPlayerStyle>
   )
