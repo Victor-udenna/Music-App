@@ -9,12 +9,12 @@ import { store, persistor } from './Config/configstore.ts'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-  <Provider store={store}>
-  <PersistGate loading={false} persistor={persistor}>
-<BrowserRouter>
-<App />
-</BrowserRouter></PersistGate>
-  </Provider>
-
-  </React.StrictMode>,
+    <Provider store={store}>
+      <PersistGate loading={false} persistor={persistor}>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </PersistGate>
+    </Provider>
+  </React.StrictMode>
 )

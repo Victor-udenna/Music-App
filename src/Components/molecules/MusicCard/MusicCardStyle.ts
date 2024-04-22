@@ -6,6 +6,7 @@ const MusicCardStyle = styled.div`
     align-items: center;
     flex-direction: column;
     gap: 8px;
+    cursor: pointer;
     img {
       width: 150px;
       height: 150px;

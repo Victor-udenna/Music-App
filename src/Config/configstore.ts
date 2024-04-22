@@ -1,23 +1,21 @@
-import { createStore, applyMiddleware } from 'redux'
-import thunk, { ThunkDispatch } from 'redux-thunk'
-import { persistStore } from 'redux-persist'
+import { configureStore } from '@reduxjs/toolkit'
+import { persistReducer, persistStore } from 'redux-persist'
 import storage from 'redux-persist/lib/storage'
-import { persistReducer } from 'redux-persist'
-import { rootReducer } from "../redux/reducer/reducer"
-import autoMergeLevel2 from 'redux-persist/es/stateReconciler/autoMergeLevel2'
+import { musicApi } from '../redux/MusicApi'
 
 const persistConfig = {
   key: 'root',
   storage,
-  stateReconciler: autoMergeLevel2,
-  blacklist: ['employeeReducer'],
 }
 
-// const {persistReducer} = require('redux-persist');
-const persistedReducer = persistReducer<any>(persistConfig, rootReducer)
+const persistedReducer = persistReducer(persistConfig, musicApi.reducer)
 
-export const store = createStore(persistedReducer, applyMiddleware(thunk))
+export const store = configureStore({
+  reducer: {
+    musicAPI: persistedReducer,
+  },
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware().concat(musicApi.middleware),
+})
+
 export const persistor = persistStore(store)
-export type RootStore = ReturnType<typeof rootReducer>
-export type ReduxState = ReturnType<typeof rootReducer>
-export type TypedDispatch = ThunkDispatch<ReduxState, any, any>
