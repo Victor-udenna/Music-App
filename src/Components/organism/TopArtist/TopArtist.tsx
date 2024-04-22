@@ -47,7 +47,7 @@ const TopArtist = () => {
                 value={topArtist ? topArtist.name : 'loading'}
               />
             </div>
-            {topArtistSong.data.map((music: any) => {
+            { topArtistSong && topArtistSong.data.map((music: any) => {
               return (
                 <MusicCard
                   musicId={music.id}
