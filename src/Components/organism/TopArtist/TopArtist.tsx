@@ -39,7 +39,7 @@ const TopArtist = () => {
               <Img
                 className="artist-img"
                 image={
-                  topArtist.picture_big ? topArtist.picture_big : defaultImg
+                  topArtist ? topArtist.picture_big : defaultImg
                 }
               />
               <Text
