@@ -4,7 +4,7 @@ import Text from '../../atoms/Text/Text'
 import { FaAngleLeft } from 'react-icons/fa6'
 import { FaAngleRight } from 'react-icons/fa6'
 import Img from '../../atoms/Image/Img'
-import artistImg from '../../../assets/There_Is_More_by_Hillsong_Worship_(Official_Album_Cover).jpg'
+import defaultImg from "../../../assets/images/defaultAvatar.jpg"
 import MusicCard from '../../molecules/MusicCard/MusicCard'
 import { useQuery } from '@tanstack/react-query'
 import axios from 'axios'
@@ -20,7 +20,7 @@ const TopArtist = () => {
       const options = {
         method: 'GET',
         url: 'https://deezerdevs-deezer.p.rapidapi.com/search',
-        params: {q: 'eminem'},
+        params: {q: 'ruth b'},
         headers: {
           'X-RapidAPI-Key': '5312ed048amsh03ba71e9c5ebb31p10336djsnc538ae0495e9-',
           'X-RapidAPI-Host': 'deezerdevs-deezer.p.rapidapi.com'
@@ -87,7 +87,7 @@ const TopArtist = () => {
         <div className="top-artist_container">
           <div className="top-artist_wrapper">
             <div className="artist-container">
-              <Img className="artist-img" image={artist.picture_big} />
+              <Img className="artist-img" image={artist.picture_big ? artist.picture_big : defaultImg} />
               <Text className="artistname" value={artist.name ? artist.name : "loading"} />
             </div>
             <MusicCard />
