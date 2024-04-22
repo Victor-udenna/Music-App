@@ -44,7 +44,7 @@ const TopArtist = () => {
               />
               <Text
                 className="artistname"
-                value={topArtist.name ? topArtist.name : 'loading'}
+                value={topArtist ? topArtist.name : 'loading'}
               />
             </div>
             {topArtistSong.data.map((music: any) => {
