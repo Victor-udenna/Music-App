@@ -2,13 +2,12 @@ import styled from 'styled-components'
 import Colors from '../../../helpers/Colors'
 
 const MusicPlayerStyle = styled.div`
-
   .music-player {
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 2rem;
-    box-shadow: 0px -4px 6px rgba(0, 0, 0, 0.1); 
+    box-shadow: 0px -4px 6px rgba(0, 0, 0, 0.1);
     padding: 1.5rem 2rem;
     position: fixed;
     bottom: 0px;
@@ -16,18 +15,18 @@ const MusicPlayerStyle = styled.div`
     width: fit-content;
     width: 85%;
     @media (prefers-color-scheme: dark) {
-    color: rgba(255, 255, 255, 0.87);
-    background-color: #242424;
-    font-synthesis: none;
-    text-rendering: optimizeLegibility;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
+      color: rgba(255, 255, 255, 0.87);
+      background-color: #242424;
+      font-synthesis: none;
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
 
-  @media (prefers-color-scheme: light) {
-    color: #213547;
-    background-color: #ffffff;
-  }
+    @media (prefers-color-scheme: light) {
+      color: #213547;
+      background-color: #ffffff;
+    }
   }
 
   * {
@@ -37,6 +36,7 @@ const MusicPlayerStyle = styled.div`
       justify-content: center;
       border: 0px;
       padding: 0px;
+      cursor: pointer;
     }
   }
 
@@ -48,6 +48,9 @@ const MusicPlayerStyle = styled.div`
       display: flex;
       align-items: center;
       gap: 12px;
+    }
+    .control-header {
+      width: 174px;
     }
   }
 
@@ -79,13 +82,13 @@ const MusicPlayerStyle = styled.div`
     width: 60%;
   }
 
-  .music__seek__container input[type="range"] {
+  .music__seek__container input[type='range'] {
     width: 100%;
     height: 8px;
     background-color: transparent;
-     outline: none;
-     -webkit-appearance: none;
-    appearance: none; 
+    outline: none;
+    -webkit-appearance: none;
+    appearance: none;
 
     &::-webkit-slider-runnable-track {
       background-color: ${Colors.neutral};
@@ -100,14 +103,14 @@ const MusicPlayerStyle = styled.div`
       height: 11px;
       margin-top: -1.2px;
       background-color: ${Colors.brand};
-      
+
       border-radius: 50%;
       cursor: pointer;
     }
   }
 
   .music__seek__container input[type='range'] {
-    width: 100%; 
+    width: 100%;
     height: 8px;
   }
 

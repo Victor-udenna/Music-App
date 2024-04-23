@@ -70,7 +70,7 @@ const MusicPlayer = () => {
 
   const shortenString = (str: string) => {
     const { length } = str
-    return length > 11 ? `${str.slice(0, 8)}...` : str
+    return length > 11 ? `${str.slice(0, 7)}...` : str
   }
 
   const audioSrc = data && data?.data && data?.data[selectedIndex]?.preview
