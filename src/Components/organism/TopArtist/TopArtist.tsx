@@ -8,14 +8,20 @@ import MusicCard from '../../molecules/MusicCard/MusicCard'
 import {
   useGetTopArtistQuery,
   useGetTopArtistSongQuery,
-} from '../../../redux/MusicApi'
+} from '../../../services/MusicApi'
+import { useDispatch } from 'react-redux'
+import { setData } from '../../../services/dataSlice'
 
 const TopArtist = () => {
-  8697922
+  const dispatch = useDispatch()
+
   const { data: topArtist, isFetching } = useGetTopArtistQuery('8697922')
   const { data: topArtistSong } = useGetTopArtistSongQuery('ruth b')
   console.log(isFetching)
-  console.log(topArtistSong)
+
+  const handleSetMusic = (index: number) => {
+    dispatch(setData({ data: topArtistSong.data, index }))
+  }
 
   return (
     <TopArtistStyle>
@@ -38,24 +44,25 @@ const TopArtist = () => {
             <div className="artist-container">
               <Img
                 className="artist-img"
-                image={
-                  topArtist ? topArtist.picture_big : defaultImg
-                }
+                image={topArtist ? topArtist.picture_big : defaultImg}
               />
               <Text
                 className="artistname"
                 value={topArtist ? topArtist.name : 'loading'}
               />
             </div>
-            { topArtistSong && topArtistSong.data.map((music: any) => {
-              return (
-                <MusicCard
-                  musicId={music.id}
-                  musicImg={music.album.cover_big}
-                  title={music.title}
-                />
-              )
-            })}
+            {topArtistSong &&
+              topArtistSong.data.map((music: any, i: number) => {
+                return (
+                  <MusicCard
+                    onClick={() => {
+                      handleSetMusic(i)
+                    }}
+                    musicImg={music.album.cover_big}
+                    title={music.title}
+                  />
+                )
+              })}
           </div>
         </div>
       </section>

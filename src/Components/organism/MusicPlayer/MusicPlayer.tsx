@@ -1,6 +1,5 @@
-import { useState, useRef } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import MusicPlayerStyle from './MusicPlayerStyle'
-import audioSample from '../../../assets/So-Will-I-100-Billion-X-Hillsong-Worship.mp3'
 import staticImg from '../../../assets/images/Solid Mid Grey.jpg'
 import Img from '../../atoms/Image/Img'
 import Text from '../../atoms/Text/Text'
@@ -15,14 +14,24 @@ import { FaPause } from 'react-icons/fa'
 import { PiSpeakerSimpleXFill } from 'react-icons/pi'
 import { HiDotsHorizontal } from 'react-icons/hi'
 import Colors from '../../../helpers/Colors'
-// import axios from 'axios'
-// import { useEffect } from 'react'
+import { useSelector } from 'react-redux'
 
 const MusicPlayer = () => {
+  const data = useSelector((state: any) => state.musicData.data)
+  let dataIndex = data.index;
+  let collectionLength = data?.data?.length
   const audioRef = useRef<any | null>(null)
   const [isPlaying, setIsPlaying] = useState(false)
   const [currentTime, setCurrentTime] = useState(0)
   const [isMuted, setIsMuted] = useState(false)
+  const [selectedIndex, setSelectedIndex] = useState(0);
+
+
+  useEffect(() => {
+    if (data && data.index !== undefined) {
+      setSelectedIndex(data.index);
+    }
+  }, [data]);
 
   const togglePlay = () => {
     if (isPlaying) {
@@ -40,59 +49,68 @@ const MusicPlayer = () => {
   }
 
   const toggleMute = () => {
-    audioRef.current.muted = !isMuted;
-    setIsMuted(!isMuted);
+    audioRef.current.muted = !isMuted
+    setIsMuted(!isMuted)
+  }
+
+
+  const handleForward = () => {
+    if (selectedIndex < data.data.length - 1) {
+      setSelectedIndex((prevIndex) => prevIndex + 1);
+    } if(selectedIndex === data.data.length -1){
+      setSelectedIndex(0)
+    }
   };
-  // const getSong = async ()=>{
-  //   const options = {
-  //     method: 'GET',
-  //     url: 'https://deezerdevs-deezer.p.rapidapi.com/search',
-  //     params: {
-  //       q: 'anendlessocean'
-  //     },
-  //     headers: {
-  //       'X-RapidAPI-Key': '5312ed048amsh03ba71e9c5ebb31p10336djsnc538ae0495e9',
-  //       'X-RapidAPI-Host': 'deezerdevs-deezer.p.rapidapi.com'
-  //     }
-  //   };
 
-  //   try {
-  //     const response = await axios.request(options);
-  //     console.log(response.data);
-  //   } catch (error) {
-  //     console.error(error);
-  //   }
-  // }
+  const handleBackfoward = () => {
+    if (selectedIndex > 0) {
+      setSelectedIndex((prevIndex) => prevIndex - 1);
+    } if( selectedIndex === 0){
+      setSelectedIndex(data.data.length -1)
+    }
+  }
 
-  // useEffect(()=>{
-  // getSong()
-  // }, [])
+  const shortenString = (str: string) => {
+    const { length } = str
+    return length > 11 ? `${str.slice(0, 8)}...` : str
+  }
+
+  const audioSrc = data && data?.data && data?.data[selectedIndex]?.preview
+  const albumCover = data && data?.data && data?.data[selectedIndex]?.album.cover_big
+  const songTitle = data && data?.data && data?.data[selectedIndex]?.title
+  console.log(data)
 
   return (
     <MusicPlayerStyle>
-      {/* <audio controls>
-        <source src={audioSample} />
-      </audio> */}
       <div className="music-player">
         <audio
           ref={audioRef}
-          src={audioSample}
+          src={audioSrc}
           onTimeUpdate={() => setCurrentTime(audioRef.current.currentTime)}
         />
         <div className="music__functionality">
           <div className="controls-container control-header">
-            <Img className="coverimg" image={staticImg} />
-            <Text className="music-title" value="Nothing's Playing" />
+            <Img className="coverimg" image={albumCover || staticImg} />
+            <Text
+              className="music-title"
+              value={songTitle ? shortenString(songTitle) : "Nothing's Playing"}
+            />
           </div>
           <div className="controls-container">
             {' '}
-            <button className="backfront-btn fwd-btn">
+            <button
+              onClick={() => handleBackfoward()}
+              className="backfront-btn fwd-btn"
+            >
               <FaStepBackward size={18} />
             </button>
             <button onClick={togglePlay} className="playpause-btn">
               {isPlaying ? <FaPause size={20} /> : <FaPlay size={20} />}
             </button>
-            <button className="backfront-btn back-btn">
+            <button
+              onClick={() => handleForward()}
+              className="backfront-btn back-btn"
+            >
               <FaStepForward size={18} />
             </button>
           </div>

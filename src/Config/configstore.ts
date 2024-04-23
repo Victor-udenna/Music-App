@@ -1,7 +1,8 @@
-import { configureStore } from '@reduxjs/toolkit'
+import { combineReducers, configureStore } from '@reduxjs/toolkit'
 import { persistReducer, persistStore } from 'redux-persist'
 import storage from 'redux-persist/lib/storage'
-import { musicApi } from '../redux/MusicApi'
+import { musicApi } from '../services/MusicApi'
+import dataReducer from '../services/dataSlice'
 
 const persistConfig = {
   key: 'root',
@@ -10,10 +11,13 @@ const persistConfig = {
 
 const persistedReducer = persistReducer(persistConfig, musicApi.reducer)
 
+const rootReducer = combineReducers({
+  musicAPI: persistedReducer,
+  musicData: dataReducer,
+})
+
 export const store = configureStore({
-  reducer: {
-    musicAPI: persistedReducer,
-  },
+  reducer: rootReducer,
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(musicApi.middleware),
 })
