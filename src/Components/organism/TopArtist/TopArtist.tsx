@@ -11,6 +11,7 @@ import {
 } from '../../../services/MusicApi'
 import { useDispatch } from 'react-redux'
 import { setData } from '../../../services/dataSlice'
+import { useRef } from 'react'
 
 const TopArtist = () => {
   const dispatch = useDispatch()
@@ -23,6 +24,18 @@ const TopArtist = () => {
     dispatch(setData({ data: topArtistSong.data, index }))
   }
 
+  const wrapperRef = useRef<any>(null)
+
+  const scrollLeft = () => {
+    const wrapper = wrapperRef.current
+    wrapper.scrollLeft -= 182
+  }
+
+  const scrollRight = () => {
+    const wrapper = wrapperRef.current
+    wrapper.scrollLeft += 182
+  }
+
   return (
     <TopArtistStyle>
       <section className="top-artist">
@@ -30,17 +43,17 @@ const TopArtist = () => {
           <Text className="" value="Your Top Artist" />
           <hr></hr>
           <div className="btn-container">
-            <button className="scoll-left_btn">
+            <button onClick={scrollLeft} className="scoll-left_btn">
               <FaAngleLeft />
             </button>
-            <button className="scoll-right_btn">
+            <button onClick={scrollRight} className="scoll-right_btn">
               <FaAngleRight />
             </button>
           </div>
         </div>
 
         <div className="top-artist_container">
-          <div className="top-artist_wrapper">
+          <div className="top-artist_wrapper" ref={wrapperRef}>
             <div className="artist-container">
               <Img
                 className="artist-img"

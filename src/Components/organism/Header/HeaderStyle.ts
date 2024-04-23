@@ -11,10 +11,7 @@ const HeaderStyle = styled.div`
     background-repeat: no-repeat;
     transform: rotateY(180deg);
     padding: 2.7rem;
-    position: fixed;
-    top: 0px;
-    right: 0px;
-    width: 85%;
+    width: 100%;
     background-color: ${Colors.header};
 
     .hero-header__text {
@@ -45,7 +42,6 @@ const HeaderStyle = styled.div`
 
   @media screen and (max-width: 600px) {
     .hero {
-      width: 80%;
       right: 0px;
       background-size: 0px;
       padding: 28px;

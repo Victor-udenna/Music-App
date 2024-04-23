@@ -1,17 +1,12 @@
 import styled from 'styled-components'
 import Colors from '../../../helpers/Colors'
 
-const TopArtistStyle = styled.div`
-  overflow: hidden;
-  margin-bottom: 3rem;
-
-  .top-artist_header {
+const DiscoverArtistStyle = styled.div`
+  .discover-artist_header {
     display: flex;
     align-items: center;
     justify-content: space-between;
     width: 100%;
-    margin-top: 2rem;
-  
     @media (prefers-color-scheme: dark) {
       color: rgba(255, 255, 255, 0.87);
       background-color: #242424;
@@ -47,11 +42,11 @@ const TopArtistStyle = styled.div`
     }
   }
 
-  .top-artist_container {
+  .discover-artist_container {
     width: 100%;
   }
 
-  .top-artist_wrapper {
+  .discover-artist_wrapper {
     display: flex;
     align-items: center;
     gap: 32px;
@@ -61,49 +56,17 @@ const TopArtistStyle = styled.div`
     scrollbar-width: none;
   }
 
-  .top-artist_wrapper::-webkit-scrollbar {
+  .discover-artist_wrapper::-webkit-scrollbar {
   display: none;
 }
 
-  .artist-container {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    gap: 8px;
-    img {
-      width: 150px;
-      height: 150px;
-      border-radius: 8px;
-    }
-
-    p {
-      font-weight: 600;
-      text-align: center;
-    }
-  }
-
   @media screen and (max-width: 600px) {
-    .top-artist_header {
-      margin-top: 1.1rem;
+    .discover-artist_header {
       hr {
         width: 15%;
       }
     }
-
-    .top-artist_wrapper {
-      width: 100%;
-      padding-top: 20px;
-    }
-
-    .artist-container  {
-      img {
-      width: 110px;
-      height: 110px;
-      } 
-    } 
   }
-
-  
 `
 
-export default TopArtistStyle
+export default DiscoverArtistStyle

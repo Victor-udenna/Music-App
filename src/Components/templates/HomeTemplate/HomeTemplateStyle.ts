@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 const HomeTemplateStyle = styled.div`
-padding: 12rem 24px 24px 24px;
+padding: 24px 24px 24px 24px;
 
 
 
@@ -23,7 +23,7 @@ padding: 12rem 24px 24px 24px;
 }
 
 @media screen and (max-width: 600px) {
-  padding: 8rem 24px 24px 24px;
+  padding: 24px 24px 24px 24px;
 }
 
 `

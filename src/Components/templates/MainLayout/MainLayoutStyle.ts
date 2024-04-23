@@ -5,6 +5,7 @@ const MainlayoutStyle = styled.div`
     display: grid;
     grid-template-columns: 15% 85%;
     width: 100%;
+    padding-bottom: 7rem;
   }
 
   .main-layout__menu {

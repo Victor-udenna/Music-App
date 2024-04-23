@@ -11,10 +11,12 @@ const dataSlice = createSlice({
     setData: (state, action) => {
       state.data = action.payload
     },
+    clearData: (state) => {
+      state.data = []
+    },
   },
 })
 
-
-export const { setData } = dataSlice.actions
+export const { setData, clearData } = dataSlice.actions
 
 export default dataSlice.reducer

@@ -31,6 +31,7 @@ const MusicPlayer = () => {
     }
   }, [data]);
 
+
   const togglePlay = () => {
     if (isPlaying) {
       audioRef.current.pause()
@@ -76,7 +77,6 @@ const MusicPlayer = () => {
   const audioSrc = data && data?.data && data?.data[selectedIndex]?.preview
   const albumCover = data && data?.data && data?.data[selectedIndex]?.album.cover_big
   const songTitle = data && data?.data && data?.data[selectedIndex]?.title
-  console.log(data)
 
   return (
     <MusicPlayerStyle>
