@@ -18,8 +18,6 @@ import { useSelector } from 'react-redux'
 
 const MusicPlayer = () => {
   const data = useSelector((state: any) => state.musicData.data)
-  let dataIndex = data.index;
-  let collectionLength = data?.data?.length
   const audioRef = useRef<any | null>(null)
   const [isPlaying, setIsPlaying] = useState(false)
   const [currentTime, setCurrentTime] = useState(0)
