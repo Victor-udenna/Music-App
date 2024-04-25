@@ -29,7 +29,7 @@ const DiscoverArtist = () => {
     wrapper.scrollLeft += 100
   }
 
-  const artistData = musicArtists.map((artistName) => {
+  const artistData = musicArtists && musicArtists?.map((artistName) => {
     const { data } = useGetArtistQuery(artistName)
     return { data }
   })
@@ -53,9 +53,10 @@ const DiscoverArtist = () => {
 
         <div className="discover-artist_container">
           <div className="discover-artist_wrapper" ref={discoverwrapperRef}>
-           { artistData && artistData.map((artist)=>{
+           { artistData && artistData?.map((artist)=>{
+              if (artist && artist.data && artist.data.data && artist.data.data.length > 0)
             return <DiscoverArsistCard
-            onClick={() => handleSetMusic(artist?.data.data, 0)}
+            onClick={() => handleSetMusic(artist?.data?.data, 0)}
             artistImg={artist?.data?.data[0]?.artist?.picture_big}
             title={artist?.data?.data[0]?.artist?.name}
           />

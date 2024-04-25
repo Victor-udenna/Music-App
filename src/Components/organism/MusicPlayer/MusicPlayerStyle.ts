@@ -89,6 +89,7 @@ const MusicPlayerStyle = styled.div`
     outline: none;
     -webkit-appearance: none;
     appearance: none;
+    cursor: pointer;
 
     &::-webkit-slider-runnable-track {
       background-color: ${Colors.neutral};

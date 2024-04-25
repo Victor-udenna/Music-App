@@ -23,31 +23,23 @@ const MusicPlayer = () => {
   const [currentTime, setCurrentTime] = useState(0)
   const [isMuted, setIsMuted] = useState(false)
   const [selectedIndex, setSelectedIndex] = useState(0)
-  const [audioLoop, setAudioLoop] = useState(false);
-  const  [autoPlay, setAutoplay] = useState(false)
+  const [audioLoop, setAudioLoop] = useState(false)
+  const [autoPlay, setAutoplay] = useState(false)
 
   useEffect(() => {
     if (data && data.index !== undefined) {
       setSelectedIndex(data.index)
+      setIsPlaying(true)
+      audioRef && audioRef?.current?.play()
     }
   }, [data])
 
-  // const togglePlay = () => {
-  //   if (isPlaying) {
-  //     audioRef?.current?.pause()
-  //     setIsPlaying(false)
-  //   } else {
-  //     audioRef?.current?.play()
-  //     setIsPlaying(true)
-  //   }
-  // }
-
-  const handlePlay =()=>{
+  const handlePlay = () => {
     audioRef?.current?.pause()
     setIsPlaying(false)
   }
 
-  const handlePause =()=>{
+  const handlePause = () => {
     audioRef?.current?.play()
     setIsPlaying(true)
   }
@@ -56,6 +48,12 @@ const MusicPlayer = () => {
     const newTime = parseFloat(e.target.value)
     setCurrentTime(newTime)
     audioRef.current.currentTime = newTime
+  }
+
+  const handleItemMove = () => {
+    handlePlay()
+    setIsPlaying(true)
+    setAutoplay(true)
   }
 
   const toggleLoop = () => {
@@ -74,6 +72,7 @@ const MusicPlayer = () => {
     if (selectedIndex === data?.data?.length - 1) {
       setSelectedIndex(0)
     }
+    handleItemMove()
   }
 
   const handleBackfoward = () => {
@@ -83,6 +82,7 @@ const MusicPlayer = () => {
     if (selectedIndex === 0) {
       setSelectedIndex(data?.data?.length - 1)
     }
+    handleItemMove()
   }
 
   const moveTonextItem = () => {
@@ -91,11 +91,9 @@ const MusicPlayer = () => {
       audioLoop == false
     ) {
       handleForward()
-      handlePlay()
-      setAutoplay(true)
+      handleItemMove()
     }
   }
-
 
   useEffect(() => {
     moveTonextItem()
@@ -137,9 +135,15 @@ const MusicPlayer = () => {
             >
               <FaStepBackward size={18} />
             </button>
-            {
-              isPlaying ? <button onClick={handlePlay} className="playpause-btn"><FaPause size={20} /></button> :   <button onClick={handlePause} className="playpause-btn"><FaPlay size={20} /></button>
-            }
+            {isPlaying ? (
+              <button onClick={handlePlay} className="playpause-btn">
+                <FaPause size={20} />
+              </button>
+            ) : (
+              <button onClick={handlePause} className="playpause-btn">
+                <FaPlay size={20} />
+              </button>
+            )}
             {/* <button onClick={togglePlay} className="playpause-btn">
               {isPlaying ? <FaPause size={20} /> : <FaPlay size={20} />}
             </button> */}
@@ -171,11 +175,11 @@ const MusicPlayer = () => {
             <LuShuffle size={18} />
           </button>
           <button onClick={toggleLoop}>
-            <LuRepeat2 color={audioLoop ? 'green' : ''} size={18} />
+            <LuRepeat2 color={audioLoop ? Colors.success : ''} size={18} />
           </button>
           <button onClick={toggleMute}>
             {isMuted ? (
-              <PiSpeakerSimpleXFill size={18} color={Colors.brand} />
+              <PiSpeakerSimpleXFill size={18} color={Colors.success} />
             ) : (
               <PiSpeakerSimpleLowFill size={18} />
             )}

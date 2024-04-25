@@ -1,8 +1,8 @@
 export const musicArtists = [
     "hillsong worship",
     "gyakie",
-    "elevation worship",
-    "Ed Sheeran",
+    "Maverick city music",
+    "Averly morillo",
     "victony",
     "james author",
     "caleb gordon",
