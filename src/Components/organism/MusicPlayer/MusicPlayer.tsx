@@ -25,6 +25,7 @@ const MusicPlayer = () => {
   const [selectedIndex, setSelectedIndex] = useState(0)
   const [audioLoop, setAudioLoop] = useState(false)
   const [autoPlay, setAutoplay] = useState(false)
+  const [isShuffle, setIsshuffle] = useState(false)
 
   useEffect(() => {
     if (data && data.index !== undefined) {
@@ -65,6 +66,10 @@ const MusicPlayer = () => {
     setIsMuted(!isMuted)
   }
 
+  const toggleShuffle = () => {
+    setIsshuffle(!isShuffle)
+  }
+
   const handleForward = () => {
     if (selectedIndex < data?.data?.length - 1) {
       setSelectedIndex((prevIndex) => prevIndex + 1)
@@ -94,6 +99,14 @@ const MusicPlayer = () => {
       handleItemMove()
     }
   }
+
+  const handleShuffle = () => {
+    toggleShuffle()
+    // const randomNumber = Math.floor(Math.random() * data?.data?.length)
+    // console.log(randomNumber)
+  }
+
+  console.log(data)
 
   useEffect(() => {
     moveTonextItem()
@@ -171,8 +184,8 @@ const MusicPlayer = () => {
           <button>
             <IoMdHeart size={18} />
           </button>
-          <button>
-            <LuShuffle size={18} />
+          <button onClick={handleShuffle}>
+            <LuShuffle color={isShuffle ? Colors.success : ''} size={18} />
           </button>
           <button onClick={toggleLoop}>
             <LuRepeat2 color={audioLoop ? Colors.success : ''} size={18} />

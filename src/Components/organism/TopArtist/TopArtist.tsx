@@ -68,6 +68,7 @@ const TopArtist = () => {
               topArtistSong.data.map((music: any, i: number) => {
                 return (
                   <MusicCard
+                  key={i}
                     onClick={() => {
                       handleSetMusic(i)
                     }}

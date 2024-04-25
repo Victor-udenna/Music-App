@@ -1,4 +1,4 @@
-import {useRef } from 'react'
+import { useRef } from 'react'
 import Text from '../../atoms/Text/Text'
 import DiscoverArsistCard from '../../molecules/DiscoverArtistCard/DiscoverArsistCard'
 import DiscoverArtistStyle from './DiscoverArtistStyle'
@@ -16,7 +16,7 @@ const DiscoverArtist = () => {
 
   const handleSetMusic = async (data: any, index: number) => {
     dispatch(clearData())
-    await dispatch(setData({data: data, index: index}))
+    await dispatch(setData({ data: data, index: index }))
   }
 
   const scrollLeft = () => {
@@ -29,11 +29,12 @@ const DiscoverArtist = () => {
     wrapper.scrollLeft += 100
   }
 
-  const artistData = musicArtists && musicArtists?.map((artistName) => {
-    const { data } = useGetArtistQuery(artistName)
-    return { data }
-  })
-
+  const artistData =
+    musicArtists &&
+    musicArtists?.map((artistName) => {
+      const { data } = useGetArtistQuery(artistName)
+      return { data }
+    })
 
   return (
     <DiscoverArtistStyle>
@@ -53,14 +54,23 @@ const DiscoverArtist = () => {
 
         <div className="discover-artist_container">
           <div className="discover-artist_wrapper" ref={discoverwrapperRef}>
-           { artistData && artistData?.map((artist)=>{
-              if (artist && artist.data && artist.data.data && artist.data.data.length > 0)
-            return <DiscoverArsistCard
-            onClick={() => handleSetMusic(artist?.data?.data, 0)}
-            artistImg={artist?.data?.data[0]?.artist?.picture_big}
-            title={artist?.data?.data[0]?.artist?.name}
-          />
-           })}
+            {artistData &&
+              artistData?.map((artist, i) => {
+                if (
+                  artist &&
+                  artist.data &&
+                  artist.data.data &&
+                  artist.data.data.length > 0
+                )
+                  return (
+                    <DiscoverArsistCard
+                      key={i}
+                      onClick={() => handleSetMusic(artist?.data?.data, 0)}
+                      artistImg={artist?.data?.data[0]?.artist?.picture_big}
+                      title={artist?.data?.data[0]?.artist?.name}
+                    />
+                  )
+              })}
           </div>
         </div>
       </div>

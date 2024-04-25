@@ -12,13 +12,13 @@ const MainLayout = ({ children }: mainlayoutType) => {
   return (
     <MainlayoutStyle>
       <main className="main-layout">
-        <div className='main-layout_menu'>
-        <Sidebar />
+        <div className="main-layout_menu">
+          <Sidebar />
         </div>
         <section className="mainlayout__body">
           <Header />
           {children}
-          <MusicPlayer/>
+          <MusicPlayer />
         </section>
       </main>
     </MainlayoutStyle>
