@@ -106,8 +106,6 @@ const MusicPlayer = () => {
     // console.log(randomNumber)
   }
 
-  console.log(data)
-
   useEffect(() => {
     moveTonextItem()
   }, [audioRef?.current?.currentTime])
