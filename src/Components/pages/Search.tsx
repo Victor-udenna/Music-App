@@ -1,5 +1,7 @@
+import SearchTemplate from '../templates/SearchTemplate/SearchTemplate'
+
 const Search = () => {
-  return <div>Search</div>
+  return <SearchTemplate />
 }
 
 export default Search
