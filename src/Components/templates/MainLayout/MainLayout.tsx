@@ -4,7 +4,6 @@ import Sidebar from '../../organism/Sidebar/Sidebar'
 import MainlayoutStyle from './MainLayoutStyle'
 import Header from '../../organism/Header/Header'
 import MusicPlayer from '../../organism/MusicPlayer/MusicPlayer'
-import SearchHeader from '../../organism/SearchHeader/SearchHeader'
 
 type mainlayoutType = {
   children: React.ReactElement
@@ -21,7 +20,7 @@ const MainLayout = ({ children }: mainlayoutType) => {
           <Sidebar />
         </div>
         <section className="mainlayout__body">
-          {!isSearchPage ? <Header /> :   <SearchHeader/>}
+          {!isSearchPage && <Header />}
           {children}
           <MusicPlayer />
         </section>

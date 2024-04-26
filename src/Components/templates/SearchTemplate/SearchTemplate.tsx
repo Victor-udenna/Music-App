@@ -1,10 +1,12 @@
 import SearchResult from '../../organism/SearchResult/SearchResult'
 import SearchTemplateStyle from './SearchTemplateStyle'
+import SearchHeader from '../../organism/SearchHeader/SearchHeader'
 
 const SearchTemplate = () => {
   return (
     <SearchTemplateStyle>
-    <SearchResult/>
+    <SearchHeader/>    
+      <SearchResult />
     </SearchTemplateStyle>
   )
 }

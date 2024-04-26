@@ -4,6 +4,7 @@ type colorType = {
   header: string
   danger: string
   neutral: string
+  button: string
 }
 
 const Colors: colorType = {
@@ -12,6 +13,7 @@ const Colors: colorType = {
   header: '#FFB5A7',
   danger: 'red',
   neutral: '#CECEDC',
+  button: '#e7e5ff',
 }
 
 export default Colors
