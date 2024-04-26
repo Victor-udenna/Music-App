@@ -11,6 +11,7 @@ const SearchResultItemStyle = styled.div`
     cursor: pointer;
     P {
       font-weight: 600;
+      text-align: start;
     }
   }
 

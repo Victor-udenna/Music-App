@@ -9,7 +9,11 @@ import { useGetArtistQuery } from '../../../services/MusicApi'
 import { useDispatch } from 'react-redux'
 import { clearData, setData } from '../../../services/dataSlice'
 
-const DiscoverArtist = () => {
+interface DiscoverProp {
+  title: string
+}
+
+const DiscoverArtist = ({title} : DiscoverProp) => {
   const discoverwrapperRef = useRef<any>(null)
 
   const dispatch = useDispatch()
@@ -38,11 +42,12 @@ const DiscoverArtist = () => {
       return { data }
     })
 
+
   return (
     <DiscoverArtistStyle>
       <div className="discover-artist">
         <div className="discover-artist_header">
-          <Text className="" value="You may also like" />
+          <Text className="" value={title} />
           <hr></hr>
           <div className="btn-container">
             <button onClick={scrollLeft} className="scoll-left_btn">

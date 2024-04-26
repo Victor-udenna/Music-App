@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import Colors from '../../../helpers/Colors'
 
 const SearchResultStyle = styled.div`
-  padding: 4rem 2.5rem 2.5rem 2.5rem;
+  padding: 6rem 2.5rem 2.5rem 2.5rem;
 
   .search-result_header {
     display: flex;

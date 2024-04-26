@@ -1,14 +1,36 @@
-import SearchHeaderStyle from "./SearchHeaderStyle"
+import { useState } from 'react'
+import SearchHeaderStyle from './SearchHeaderStyle'
 
-const SearchHeader = () => {
+interface SearchHeaderProps {
+  onFormSubmit: (artistName: string) => void
+}
+
+const SearchHeader = ({ onFormSubmit }: SearchHeaderProps) => {
+  const [artistName, setArtistName] = useState('')
+
+  const handleSubmit = (e: any) => {
+    e.preventDefault()
+    onFormSubmit(artistName)
+  }
+
+  const handleChange = (e: any) => {
+    setArtistName(e.target.value)
+  }
+
   return (
-   <SearchHeaderStyle>
-     <header className="header">
-   <form>
-    <input placeholder="Enter artist name" type="search"/>
-   </form>
-     </header>
-   </SearchHeaderStyle>
+    <SearchHeaderStyle>
+      <header className="header">
+        <form onSubmit={handleSubmit}>
+          <input
+            placeholder="Enter artist name"
+            type="search"
+            value={artistName}
+            onChange={handleChange}
+            required
+          />
+        </form>
+      </header>
+    </SearchHeaderStyle>
   )
 }
 
