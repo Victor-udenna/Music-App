@@ -9,18 +9,22 @@ import {
   useGetTopArtistQuery,
   useGetTopArtistSongQuery,
 } from '../../../services/MusicApi'
-import { useDispatch } from 'react-redux'
-import { setData } from '../../../services/dataSlice'
+import { useDispatch, useSelector } from 'react-redux'
+import { setData, clearData } from '../../../services/dataSlice'
 import { useRef } from 'react'
 
 const TopArtist = () => {
   const dispatch = useDispatch()
+  const data = useSelector((state: any) => state.musicData.data)
 
   const { data: topArtist, isFetching } = useGetTopArtistQuery('8697922')
   const { data: topArtistSong } = useGetTopArtistSongQuery('ruth b')
   console.log(isFetching)
 
   const handleSetMusic = (index: number) => {
+    if (data) {
+      dispatch(clearData())
+    }
     dispatch(setData({ data: topArtistSong.data, index }))
   }
 
@@ -36,6 +40,7 @@ const TopArtist = () => {
     wrapper.scrollLeft += 182
   }
 
+  console.log(data)
   return (
     <TopArtistStyle>
       <section className="top-artist">
@@ -68,7 +73,7 @@ const TopArtist = () => {
               topArtistSong.data.map((music: any, i: number) => {
                 return (
                   <MusicCard
-                  key={i}
+                    key={i}
                     onClick={() => {
                       handleSetMusic(i)
                     }}

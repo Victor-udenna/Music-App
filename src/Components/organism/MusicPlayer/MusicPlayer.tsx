@@ -93,17 +93,15 @@ const MusicPlayer = () => {
   const moveTonextItem = () => {
     if (
       audioRef?.current?.currentTime === audioRef?.current?.duration &&
-      audioLoop == false
+      audioLoop === false
     ) {
       handleForward()
       handleItemMove()
+      if (isShuffle) {
+        const randomNumber = Math.floor(Math.random() * data?.data?.length)
+        setSelectedIndex(randomNumber)
+      }
     }
-  }
-
-  const handleShuffle = () => {
-    toggleShuffle()
-    // const randomNumber = Math.floor(Math.random() * data?.data?.length)
-    // console.log(randomNumber)
   }
 
   useEffect(() => {
@@ -129,6 +127,7 @@ const MusicPlayer = () => {
           onTimeUpdate={() => setCurrentTime(audioRef?.current?.currentTime)}
           loop={audioLoop}
           autoPlay={autoPlay}
+          muted={isMuted}
         />
         <div className="music__functionality">
           <div className="controls-container control-header">
@@ -155,9 +154,6 @@ const MusicPlayer = () => {
                 <FaPlay size={20} />
               </button>
             )}
-            {/* <button onClick={togglePlay} className="playpause-btn">
-              {isPlaying ? <FaPause size={20} /> : <FaPlay size={20} />}
-            </button> */}
             <button
               onClick={() => handleForward()}
               className="backfront-btn back-btn"
@@ -172,7 +168,7 @@ const MusicPlayer = () => {
             className="seek"
             type="range"
             min="0"
-            max={audioRef.current ? audioRef?.current?.duration : 0}
+            max={audioRef.current ? audioRef.current.duration || 0 : 0}
             value={currentTime}
             onChange={handleSeek}
           />
@@ -182,13 +178,25 @@ const MusicPlayer = () => {
           <button>
             <IoMdHeart size={18} />
           </button>
-          <button onClick={handleShuffle}>
+          <button
+            onClick={() => {
+              toggleShuffle()
+            }}
+          >
             <LuShuffle color={isShuffle ? Colors.success : ''} size={18} />
           </button>
-          <button onClick={toggleLoop}>
+          <button
+            onClick={() => {
+              toggleLoop()
+            }}
+          >
             <LuRepeat2 color={audioLoop ? Colors.success : ''} size={18} />
           </button>
-          <button onClick={toggleMute}>
+          <button
+            onClick={() => {
+              toggleMute()
+            }}
+          >
             {isMuted ? (
               <PiSpeakerSimpleXFill size={18} color={Colors.success} />
             ) : (

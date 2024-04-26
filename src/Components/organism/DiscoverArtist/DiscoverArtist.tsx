@@ -7,16 +7,18 @@ import { FaAngleRight } from 'react-icons/fa6'
 import { musicArtists } from '../../../helpers/discoverArtist'
 import { useGetArtistQuery } from '../../../services/MusicApi'
 import { useDispatch } from 'react-redux'
-import { setData, clearData } from '../../../services/dataSlice'
+import { clearData, setData } from '../../../services/dataSlice'
 
 const DiscoverArtist = () => {
   const discoverwrapperRef = useRef<any>(null)
 
   const dispatch = useDispatch()
 
-  const handleSetMusic = async (data: any, index: number) => {
-    dispatch(clearData())
-    await dispatch(setData({ data: data, index: index }))
+  const handleSetMusic = (data: any, index: number) => {
+    if (data) {
+      dispatch(clearData())
+    }
+    dispatch(setData({ data: data, index: index }))
   }
 
   const scrollLeft = () => {
