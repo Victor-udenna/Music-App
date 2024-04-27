@@ -1,10 +1,6 @@
 import SearchResultStyle from './SearchResultStyle'
-import artistImg from '../../../assets/images/defaultAvatar.jpg'
 import SearchResultItem from '../../molecules/SearchResultItem/SearchResultItem'
-import Img from '../../atoms/Image/Img'
 import Text from '../../atoms/Text/Text'
-import { IoAlbums } from 'react-icons/io5'
-import { PiUsersFourFill } from 'react-icons/pi'
 import { useGetArtistQuery} from '../../../services/MusicApi'
 import DiscoverArtist from '../DiscoverArtist/DiscoverArtist'
 useGetArtistQuery
@@ -14,10 +10,7 @@ interface SearchResultProps {
 }
 
 const SearchResult = ({ artistname }: SearchResultProps) => {
-  // const { data: topArtist, isFetching } = useGetTopArtistQuery('8697922');
-  const { data: artistSong } = useGetArtistQuery(artistname);
-
-  console.log(artistSong)
+const { data: artistSong } = useGetArtistQuery(artistname);
 
 
   return (
@@ -25,16 +18,8 @@ const SearchResult = ({ artistname }: SearchResultProps) => {
       {artistSong?.data ?  (
             <section className="search-result">
             <div className="search-result_header">
-              <Img className="artist-img" image={artistImg} />
-              <Text className="result-artist_name" value={'Ruth b'} />
-              <div className="artist-stat">
-                <div className="icon-stat">
-                  <IoAlbums /> <Text value={'1121'} />
-                </div>
-                <div className="icon-stat">
-                  <PiUsersFourFill /> <Text value={'1121'} />
-                </div>
-              </div>
+  <Text className='result-header_text' value={'Showing results for'}/>
+  <Text className='result-artist_name' value={artistname}/>
             </div>
     
             <div>

@@ -15,6 +15,12 @@ const SearchResultItemStyle = styled.div`
     }
   }
 
+  .result-desc{
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+  }
+
   .result-list:hover{
   background-color: rgba(0, 0, 0, 0.1);
   }
@@ -26,8 +32,6 @@ const SearchResultItemStyle = styled.div`
 
   @media screen and (max-width: 600px) {
     .result-list {
-      justify-content: start;
-      gap: 12px;
       .artist-name,
       .album-name {
         display: none;

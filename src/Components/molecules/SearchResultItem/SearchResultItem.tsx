@@ -22,11 +22,13 @@ const SearchResultItem = ({
   return (
     <SearchResultItemStyle>
       <div role="button" className="result-list">
-        <Img className="result-img" image={musicImg ? musicImg : 'music img'} />
+       <div className='result-desc'>
+       <Img className="result-img" image={musicImg ? musicImg : 'music img'} />
         <Text
           className="song-title"
           value={songtitle ? shortenString(songtitle) : 'loading'}
         />
+       </div>
         <Text
           className="artist-name"
           value={artist ? shortenString(artist) : 'loading'}
