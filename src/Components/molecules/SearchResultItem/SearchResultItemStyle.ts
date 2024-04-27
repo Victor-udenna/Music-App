@@ -5,24 +5,28 @@ const SearchResultItemStyle = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-between;
+    text-align: center;
     padding: 10px;
     margin: 1rem 0;
     border-radius: 6px;
     cursor: pointer;
-    P {
-      font-weight: 600;
-      text-align: start;
+    .album-artist {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      width: 200px;
     }
   }
 
-  .result-desc{
+  .result-desc {
     display: flex;
     align-items: center;
     gap: 1.2rem;
+    width: 160px;
   }
 
-  .result-list:hover{
-  background-color: rgba(0, 0, 0, 0.1);
+  .result-list:hover {
+    background-color: rgba(0, 0, 0, 0.1);
   }
 
   .result-img {
@@ -32,16 +36,22 @@ const SearchResultItemStyle = styled.div`
 
   @media screen and (max-width: 600px) {
     .result-list {
+      .album-artist {
+        width: 100%;
+      }
       .artist-name,
       .album-name {
         display: none;
-        
       }
     }
 
-    .result-list:hover{
-  border: none;
-  }
+    .result-desc {
+    width: 100%;
+    }
+
+    .result-list:hover {
+      border: none;
+    }
   }
 `
 
