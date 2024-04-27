@@ -7,6 +7,7 @@ type SearchResultItemType = {
   artist: string
   album: string
   musicImg: any
+  onClick: ()=> void
 }
 
 const SearchResultItem = ({
@@ -14,14 +15,15 @@ const SearchResultItem = ({
   artist,
   album,
   musicImg,
+  onClick
 }: SearchResultItemType) => {
   const shortenString = (str: string) => {
     const { length } = str
-    return length > 11 ? `${str.slice(0, 8)}...` : str
+    return length > 11 ? `${str.slice(0, 15)}...` : str
   }
   return (
     <SearchResultItemStyle>
-      <div role="button" className="result-list">
+      <div role="button"  onClick={onClick} className="result-list">
         <div className="result-desc">
           <Img
             className="result-img"

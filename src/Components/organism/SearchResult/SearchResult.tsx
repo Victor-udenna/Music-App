@@ -3,14 +3,24 @@ import SearchResultItem from '../../molecules/SearchResultItem/SearchResultItem'
 import Text from '../../atoms/Text/Text'
 import { useGetArtistQuery } from '../../../services/MusicApi'
 import DiscoverArtist from '../DiscoverArtist/DiscoverArtist'
-useGetArtistQuery
+import { setData, clearData } from '../../../services/dataSlice'
+import { useDispatch, useSelector } from 'react-redux'
 
 interface SearchResultProps {
   artistname: string
 }
 
 const SearchResult = ({ artistname }: SearchResultProps) => {
+  const dispatch = useDispatch()
+  const data = useSelector((state: any) => state.musicData.data)
   const { data: artistSong } = useGetArtistQuery(artistname)
+
+  const handleSetMusic = (index: number) => {
+    if (data) {
+      dispatch(clearData())
+    }
+    dispatch(setData({ data: artistSong?.data, index }))
+  }
 
   return (
     <SearchResultStyle>
@@ -25,10 +35,13 @@ const SearchResult = ({ artistname }: SearchResultProps) => {
           </div>
 
           <div>
-            {artistSong.data &&
-              artistSong.data.map((song: any, i: number) => {
+            {artistSong?.data &&
+              artistSong?.data.map((song: any, i: number) => {
                 return (
                   <SearchResultItem
+                    onClick={() => {
+                      handleSetMusic(i)
+                    }}
                     key={i}
                     songtitle={song.title}
                     album={song.album.title}

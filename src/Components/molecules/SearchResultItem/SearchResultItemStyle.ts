@@ -5,7 +5,6 @@ const SearchResultItemStyle = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-between;
-    text-align: center;
     padding: 10px;
     margin: 1rem 0;
     border-radius: 6px;
@@ -22,7 +21,7 @@ const SearchResultItemStyle = styled.div`
     display: flex;
     align-items: center;
     gap: 1.2rem;
-    width: 160px;
+    width: 200px;
   }
 
   .result-list:hover {
@@ -36,17 +35,15 @@ const SearchResultItemStyle = styled.div`
 
   @media screen and (max-width: 600px) {
     .result-list {
-      .album-artist {
+      .result-desc {
         width: 100%;
+        flex-grow: 1;
+        flex-shrink: 0;
       }
       .artist-name,
       .album-name {
         display: none;
       }
-    }
-
-    .result-desc {
-    width: 100%;
     }
 
     .result-list:hover {
