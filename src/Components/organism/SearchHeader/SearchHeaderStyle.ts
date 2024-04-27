@@ -35,7 +35,6 @@ const SearchHeaderStyle = styled.div`
     padding: 1.5rem;
     border: 1px solid ${Colors.neutral};
     border-radius: 6px;
-    color: ${Colors.neutral};
   }
 
   input:focus {

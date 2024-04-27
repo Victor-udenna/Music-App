@@ -22,7 +22,7 @@ const SearchHeader = ({ onFormSubmit }: SearchHeaderProps) => {
       <header className="header">
         <form onSubmit={handleSubmit}>
           <input
-            placeholder="Enter artist name"
+            placeholder="What do you want to play ?"
             type="search"
             value={artistName}
             onChange={handleChange}
