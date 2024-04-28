@@ -11,7 +11,6 @@ const SearchResultStyle = styled.div`
     gap: 4px;
   }
 
-
   .artist-img {
     width: 200px;
     height: 200px;
@@ -22,7 +21,6 @@ const SearchResultStyle = styled.div`
     font-weight: 600;
     font-size: 18px;
   }
-
 
   @media screen and (max-width: 600px) {
     .search-result_header {
