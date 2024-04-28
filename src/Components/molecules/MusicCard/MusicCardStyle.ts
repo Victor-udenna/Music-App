@@ -22,8 +22,8 @@ const MusicCardStyle = styled.div`
   @media screen and (max-width: 600px) {
     .music-card {
       img {
-      width: 110px;
-      height: 110px;
+      width: 150px;
+      height: 150px;
       } 
     }  
   }

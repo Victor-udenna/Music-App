@@ -22,8 +22,8 @@ const DiscoverArtistCardStyle = styled.div`
   @media screen and (max-width: 600px) {
     .discover-card {
       img {
-      width: 110px;
-      height: 110px;
+      width: 150px;
+      height: 150px;
       } 
     }  
   }

@@ -97,8 +97,8 @@ const TopArtistStyle = styled.div`
 
     .artist-container  {
       img {
-      width: 110px;
-      height: 110px;
+      width: 150px;
+      height: 150px;
       } 
     } 
   }
