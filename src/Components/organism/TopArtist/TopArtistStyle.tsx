@@ -71,8 +71,8 @@ const TopArtistStyle = styled.div`
     flex-direction: column;
     gap: 8px;
     img {
-      width: 150px;
-      height: 150px;
+      width: 160px;
+      height: 160px;
       border-radius: 8px;
     }
 

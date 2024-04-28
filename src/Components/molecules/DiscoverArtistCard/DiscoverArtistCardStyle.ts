@@ -8,8 +8,8 @@ const DiscoverArtistCardStyle = styled.div`
     gap: 8px;
     cursor: pointer;
     img {
-      width: 150px;
-      height: 150px;
+      width: 160px;
+      height: 160px;
       border-radius: 8px;
     }
 
