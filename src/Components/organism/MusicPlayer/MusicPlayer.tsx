@@ -26,14 +26,24 @@ const MusicPlayer = () => {
   const [audioLoop, setAudioLoop] = useState(false)
   const [autoPlay, setAutoplay] = useState(false)
   const [isShuffle, setIsshuffle] = useState(false)
+  const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
     if (data && data.index !== undefined) {
       setSelectedIndex(data.index)
       setIsPlaying(true)
-      audioRef && audioRef?.current?.play()
+      setAutoplay(true)
+      setIsLoading(false)
     }
   }, [data])
+
+  useEffect(() => {
+    const lagTimeout = setTimeout(() => {
+      setIsLoading(false)
+    }, 32)
+
+    return () => clearTimeout(lagTimeout)
+  }, [])
 
   const handlePlay = () => {
     audioRef?.current?.pause()
@@ -145,12 +155,20 @@ const MusicPlayer = () => {
             >
               <FaStepBackward size={18} />
             </button>
-            {isPlaying ? (
-              <button onClick={handlePlay} className="playpause-btn">
-                <FaPause size={20} />
-              </button>
+            {audioSrc && !isLoading ? (
+              <>
+                {isPlaying ? (
+                  <button onClick={handlePlay} className="playpause-btn">
+                    <FaPause size={20} />
+                  </button>
+                ) : (
+                  <button onClick={handlePause} className="playpause-btn">
+                    <FaPlay size={20} />
+                  </button>
+                )}
+              </>
             ) : (
-              <button onClick={handlePause} className="playpause-btn">
+              <button disabled className="notactive_button">
                 <FaPlay size={20} />
               </button>
             )}

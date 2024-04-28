@@ -73,6 +73,14 @@ const MusicPlayerStyle = styled.div`
     color: #ffffff;
   }
 
+  .notactive_button {
+    width: 52px;
+    height: 52px;
+    background-color: ${Colors.neutral};
+    border-radius: 50%;
+    color: #ffffff;
+  }
+
   .backfront-btn {
     color: ${Colors.neutral};
     background-color: inherit;
@@ -139,7 +147,8 @@ const MusicPlayerStyle = styled.div`
         display: none;
       }
 
-      .playpause-btn {
+      .playpause-btn,
+      .notactive_button {
         width: 50px;
         height: 50px;
       }
