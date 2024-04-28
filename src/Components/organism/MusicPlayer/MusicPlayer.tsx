@@ -69,6 +69,7 @@ const MusicPlayer = () => {
 
   const toggleLoop = () => {
     setAudioLoop(!audioLoop)
+    setIsshuffle(false)
   }
 
   const toggleMute = () => {
@@ -78,6 +79,7 @@ const MusicPlayer = () => {
 
   const toggleShuffle = () => {
     setIsshuffle(!isShuffle)
+    setAudioLoop(false)
   }
 
   const handleForward = () => {
