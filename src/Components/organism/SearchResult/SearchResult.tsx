@@ -2,7 +2,6 @@ import SearchResultStyle from './SearchResultStyle'
 import SearchResultItem from '../../molecules/SearchResultItem/SearchResultItem'
 import Text from '../../atoms/Text/Text'
 import { useGetArtistQuery } from '../../../services/MusicApi'
-import DiscoverArtist from '../DiscoverArtist/DiscoverArtist'
 import { setData, clearData } from '../../../services/dataSlice'
 import { useDispatch, useSelector } from 'react-redux'
 
@@ -53,7 +52,33 @@ const SearchResult = ({ artistname }: SearchResultProps) => {
           </div>
         </section>
       ) : (
-        <DiscoverArtist title="Quick search" />
+        <section className="quick-search-container">
+          <div>
+            <Text className="search-header" value="More of what you may like" />
+            <div className="quick-search">
+              <button>Elevation worship</button>
+              <button>Dua lipa</button>
+              <button>Lizzy McAlpine</button>
+              <button>Sarz</button>
+              <button>wizkid</button>
+              <button>gunna</button>
+            </div>
+          </div>
+
+          <div className="quick-search-container">
+            <Text className="search-header" value="#trending" />
+            <div className="quick-search">
+              <button>{'# '}Thswala bam</button>
+              <button>{'# '}kendrick lamar</button>
+              <button>{'# '}drake</button>
+              <button>{'# '}Tyler icu</button>
+              <button>{'# '}Beautiful Things</button>
+              <button>{'# '}calling my name</button>
+              <button>{'# '}J cole</button>
+              <button>{'# '}Houdini</button>
+            </div>
+          </div>
+        </section>
       )}
     </SearchResultStyle>
   )
