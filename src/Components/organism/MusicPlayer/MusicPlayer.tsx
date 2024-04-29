@@ -14,10 +14,13 @@ import { FaPause } from 'react-icons/fa'
 import { PiSpeakerSimpleXFill } from 'react-icons/pi'
 import { HiDotsHorizontal } from 'react-icons/hi'
 import Colors from '../../../helpers/Colors'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
+import { activeSong } from '../../../services/dataSlice'
 
 const MusicPlayer = () => {
   const data = useSelector((state: any) => state.musicData.data)
+
+  const dispatch = useDispatch()
   const audioRef = useRef<any | null>()
   const [isPlaying, setIsPlaying] = useState(false)
   const [currentTime, setCurrentTime] = useState(0)
@@ -116,8 +119,15 @@ const MusicPlayer = () => {
     }
   }
 
+  const setActiveSongTitle = () => {
+    if (data && data?.data) {
+      dispatch(activeSong(data?.data[selectedIndex]?.title))
+    }
+  }
+
   useEffect(() => {
     moveTonextItem()
+    setActiveSongTitle()
   }, [audioRef?.current?.currentTime])
 
   const shortenString = (str: string) => {

@@ -2,6 +2,7 @@ import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
   data: [],
+  activeSongTitle: ''
 }
 
 const dataSlice = createSlice({
@@ -14,9 +15,12 @@ const dataSlice = createSlice({
     clearData: (state) => {
       state.data = []
     },
+    activeSong: (state, action)=>{
+      state.activeSongTitle = action.payload
+    }
   },
 })
 
-export const { setData, clearData } = dataSlice.actions
+export const { setData, clearData, activeSong } = dataSlice.actions
 
 export default dataSlice.reducer

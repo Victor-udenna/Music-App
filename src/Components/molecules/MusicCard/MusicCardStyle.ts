@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import Colors from '../../../helpers/Colors'
 
 const MusicCardStyle = styled.div`
   .music-card {
@@ -16,6 +17,9 @@ const MusicCardStyle = styled.div`
     p {
       font-weight: 600;
       text-align: center;
+    }
+    .active{
+      color: ${Colors.brand};
     }
   }
 
