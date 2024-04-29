@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import Colors from '../../../helpers/Colors'
 
 const SearchResultItemStyle = styled.div`
   .result-list {
@@ -16,6 +17,13 @@ const SearchResultItemStyle = styled.div`
       width: 200px;
     }
   }
+
+  /* .result-list.active {
+    background-color: rgba(0, 0, 0, 0.1);
+    * {
+      color: ${Colors.brand};
+    }
+  } */
 
   .result-desc {
     display: flex;

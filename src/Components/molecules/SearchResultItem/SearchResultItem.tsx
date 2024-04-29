@@ -1,13 +1,15 @@
 import SearchResultItemStyle from './SearchResultItemStyle'
 import Img from '../../atoms/Image/Img'
 import Text from '../../atoms/Text/Text'
+import { useSelector } from 'react-redux'
+
 
 type SearchResultItemType = {
   songtitle: string
   artist: string
   album: string
   musicImg: any
-  onClick: ()=> void
+  onClick: () => void
 }
 
 const SearchResultItem = ({
@@ -15,15 +17,19 @@ const SearchResultItem = ({
   artist,
   album,
   musicImg,
-  onClick
+  onClick,
 }: SearchResultItemType) => {
+  const activeSongTitle = useSelector(
+    (state: any) => state.musicData.activeSongTitle
+  )
+
   const shortenString = (str: string) => {
     const { length } = str
     return length > 11 ? `${str.slice(0, 15)}...` : str
   }
   return (
     <SearchResultItemStyle>
-      <div role="button"  onClick={onClick} className="result-list">
+      <div role="button" onClick={onClick} className={`result-list ${activeSongTitle === songtitle ? "active" : ""}`}>
         <div className="result-desc">
           <Img
             className="result-img"

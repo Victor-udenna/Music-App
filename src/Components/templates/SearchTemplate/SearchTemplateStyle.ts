@@ -1,7 +1,6 @@
 import styled from 'styled-components'
 
 const SearchTemplateStyle = styled.div`
-
   @media (prefers-color-scheme: dark) {
     color: rgba(255, 255, 255, 0.87);
     background-color: #242424;
@@ -19,7 +18,6 @@ const SearchTemplateStyle = styled.div`
   }
 
   @media screen and (max-width: 600px) {
-
   }
 `
 
