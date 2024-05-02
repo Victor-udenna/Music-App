@@ -18,12 +18,12 @@ const SearchResultItemStyle = styled.div`
     }
   }
 
-  /* .result-list.active {
+  .result-list.active {
     background-color: rgba(0, 0, 0, 0.1);
     * {
       color: ${Colors.brand};
     }
-  } */
+  }
 
   .result-desc {
     display: flex;

@@ -69,6 +69,7 @@ const SearchComponent = () => {
                     album={song.album.title}
                     musicImg={song.album.cover_big}
                     artist={song.artist.name}
+                    musicId={song.id}
                   />
                 )
               })}

@@ -8,10 +8,11 @@ type MusicCard = {
   musicImg: string
   title: string
   onClick: () => void
+  musicId: number
 }
 
-const MusicCard = ({ musicImg, title, onClick }: MusicCard) => {
-  const activeSongTitle = useSelector((state: any) => state.musicData.activeSongTitle);
+const MusicCard = ({ musicImg, title, onClick, musicId }: MusicCard) => {
+  const activeSongid = useSelector((state: any) => state.musicData.activeSongTitle);
   const shortenString = (str: string) => {
     const { length } = str
     return length > 11 ? `${str.slice(0, 8)}...` : str
@@ -22,7 +23,7 @@ const MusicCard = ({ musicImg, title, onClick }: MusicCard) => {
       <div role="button" onClick={onClick} className="music-card">
         <Img className="music-img" image={musicImg ? musicImg : defaultMusic} />
         <Text
-          className={`music-title ${activeSongTitle === title ? "active" : ""}`}
+          className={`music-title ${activeSongid === musicId ? "active" : ""}`}
           value={title ? shortenString(title) : 'loading'}
         />
       </div>

@@ -10,6 +10,7 @@ type SearchResultItemType = {
   album: string
   musicImg: any
   onClick: () => void
+  musicId: number
 }
 
 const SearchResultItem = ({
@@ -18,8 +19,9 @@ const SearchResultItem = ({
   album,
   musicImg,
   onClick,
+  musicId
 }: SearchResultItemType) => {
-  const activeSongTitle = useSelector(
+  const activeSongid = useSelector(
     (state: any) => state.musicData.activeSongTitle
   )
 
@@ -29,7 +31,7 @@ const SearchResultItem = ({
   }
   return (
     <SearchResultItemStyle>
-      <div role="button" onClick={onClick} className={`result-list ${activeSongTitle === songtitle ? "active" : ""}`}>
+      <div role="button" onClick={onClick} className={`result-list ${activeSongid === musicId ? "active" : ""}`}>
         <div className="result-desc">
           <Img
             className="result-img"

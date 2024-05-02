@@ -74,9 +74,11 @@ const TopArtist = () => {
                     key={i}
                     onClick={() => {
                       handleSetMusic(i)
+                      console.log(music.id)
                     }}
                     musicImg={music.album.cover_big}
                     title={music.title}
+                    musicId={music.id}
                   />
                 )
               })}

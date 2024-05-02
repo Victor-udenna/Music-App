@@ -121,7 +121,7 @@ const MusicPlayer = () => {
 
   const setActiveSongTitle = () => {
     if (data && data?.data) {
-      dispatch(activeSong(data?.data[selectedIndex]?.title))
+      dispatch(activeSong(data?.data[selectedIndex]?.id))
     }
   }
 
