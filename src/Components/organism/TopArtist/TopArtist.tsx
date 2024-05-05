@@ -12,12 +12,13 @@ import {
 import { useDispatch, useSelector } from 'react-redux'
 import { setData, clearData } from '../../../services/dataSlice'
 import { useRef } from 'react'
+import CardLoader from '../../molecules/CardLoader/CardLoader'
 
 const TopArtist = () => {
   const dispatch = useDispatch()
   const data = useSelector((state: any) => state.musicData.data)
 
-  const { data: topArtist } = useGetTopArtistQuery('8697922')
+  const { isLoading, data: topArtist } = useGetTopArtistQuery('8697922')
   const { data: topArtistSong } = useGetTopArtistSongQuery('ruth b')
 
   const handleSetMusic = (index: number) => {
@@ -41,50 +42,54 @@ const TopArtist = () => {
 
   return (
     <TopArtistStyle>
-      <section className="top-artist">
-        <div className="top-artist_header">
-          <Text className="" value="Your Top Artist" />
-          <hr></hr>
-          <div className="btn-container">
-            <button onClick={scrollLeft} className="scoll-left_btn">
-              <FaAngleLeft />
-            </button>
-            <button onClick={scrollRight} className="scoll-right_btn">
-              <FaAngleRight />
-            </button>
-          </div>
-        </div>
-
-        <div className="top-artist_container">
-          <div className="top-artist_wrapper" ref={wrapperRef}>
-            <div className="artist-container">
-              <Img
-                className="artist-img"
-                image={topArtist ? topArtist.picture_big : defaultImg}
-              />
-              <Text
-                className="artistname"
-                value={topArtist ? topArtist.name : 'loading'}
-              />
+      {isLoading ? (
+        <CardLoader />
+      ) : (
+        <section className="top-artist">
+          <div className="top-artist_header">
+            <Text className="" value="Your Top Artist" />
+            <hr></hr>
+            <div className="btn-container">
+              <button onClick={scrollLeft} className="scoll-left_btn">
+                <FaAngleLeft />
+              </button>
+              <button onClick={scrollRight} className="scoll-right_btn">
+                <FaAngleRight />
+              </button>
             </div>
-            {topArtistSong &&
-              topArtistSong.data.map((music: any, i: number) => {
-                return (
-                  <MusicCard
-                    key={i}
-                    onClick={() => {
-                      handleSetMusic(i)
-                      console.log(music.id)
-                    }}
-                    musicImg={music.album.cover_big}
-                    title={music.title}
-                    musicId={music.id}
-                  />
-                )
-              })}
           </div>
-        </div>
-      </section>
+
+          <div className="top-artist_container">
+            <div className="top-artist_wrapper" ref={wrapperRef}>
+              <div className="artist-container">
+                <Img
+                  className="artist-img"
+                  image={topArtist ? topArtist.picture_big : defaultImg}
+                />
+                <Text
+                  className="artistname"
+                  value={topArtist ? topArtist.name : 'loading'}
+                />
+              </div>
+              {topArtistSong &&
+                topArtistSong.data.map((music: any, i: number) => {
+                  return (
+                    <MusicCard
+                      key={i}
+                      onClick={() => {
+                        handleSetMusic(i)
+                        console.log(music.id)
+                      }}
+                      musicImg={music.album.cover_big}
+                      title={music.title}
+                      musicId={music.id}
+                    />
+                  )
+                })}
+            </div>
+          </div>
+        </section>
+      )}
     </TopArtistStyle>
   )
 }

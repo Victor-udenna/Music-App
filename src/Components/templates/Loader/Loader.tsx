@@ -7,8 +7,8 @@ const Loader = () => {
     <LoaderStyle>
       <div>
         <Audio
-          height="100"
-          width="100"
+          height="70"
+          width="70"
           color="#574fd8"
           ariaLabel="audio-loading"
           wrapperStyle={{}}
