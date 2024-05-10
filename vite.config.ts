@@ -6,9 +6,9 @@ const manifestForPlugin: Partial<any> = {
   registerType: "prompt",
   includeAssets: ["favicon.ico", "apple-touch-icon.png", "masked-icon.svg"],
   manifest: {
-    name: "Weather Ups",
-    short_name: "Weathe Ups",
-    description: "An app that can show weather forecast for your city.",
+    name: "Music App",
+    short_name: "Music App",
+    description: "Music screeaming platform",
     icons: [
       {
         src: "/android-chrome-192x192.png",
