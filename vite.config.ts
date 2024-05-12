@@ -44,7 +44,7 @@ const manifestForPlugin: Partial<any> = {
 };
 
 
-// https://vitejs.dev/config/
+
 export default defineConfig({
   plugins: [react(), VitePWA(manifestForPlugin)],
 })
