@@ -22,7 +22,7 @@ const ErrorUi = () => {
         <Text className="error-header-text" value="An error occured" />
         <Text
           className="error-description"
-          value="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad tenetur blanditiis beatae a quibusdam illo harum repudiandae veritatis nostrum architecto."
+          value=""
         />
         <div className="button-container">
           <button onClick={()=>{handleGoHome()}} className="home-btn">Go Home</button>
