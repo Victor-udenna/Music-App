@@ -9,6 +9,9 @@ import ErrorUi from './Components/templates/ErrorUi/ErrorUi'
 const Search = lazy(() => import('./Components/pages/Search'))
 const Home = lazy(() => import('./Components/pages/Home'))
 const NotFound = lazy(()=> import("./Components/pages/NotFound"))
+const Favourite = lazy(()=> import("./Components/pages/Favourite"))
+const Chart = lazy(()=> import("./Components/pages/Chart"))
+const Playlist = lazy(()=> import("./Components/pages/Playlist"))
 
 function App() {
   return (
@@ -20,6 +23,9 @@ function App() {
               <Route path="/" element={<Home />} />
               <Route path="/search" element={<Search />} />
               <Route path="/*" element={<NotFound />} />
+              <Route path="/favourites" element={<Favourite />} />
+              <Route path="/charts" element={<Chart />} />
+              <Route path="/playlist" element={<Playlist />} />
             </Routes>
           </MainLayout>
         </ErrorBoundary>

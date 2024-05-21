@@ -49,7 +49,7 @@ const Sidebar = () => {
               location.pathname === '/favourites' ? 'active' : ''
             }`}
           >
-            <NavLink to={'/'}>
+            <NavLink to={'/favourite  s'}>
               <div className="sidebar-menu__item">
                 <IoMdHeart size={16} />
                 <Text className="menu-item_text" value={'Favourites'} />
@@ -61,7 +61,7 @@ const Sidebar = () => {
               location.pathname === '/playlists' ? 'active' : ''
             }`}
           >
-            <NavLink to={'/'}>
+            <NavLink to={'/playlist'}>
               <div className="sidebar-menu__item">
                 <FaCirclePlay size={16} />
                 <Text className="menu-item_text" value={'Playlists'} />
@@ -74,7 +74,7 @@ const Sidebar = () => {
               location.pathname === '/charts' ? 'active' : ''
             }`}
           >
-            <NavLink to={'/'}>
+            <NavLink to={'/charts'}>
               <div className="sidebar-menu__item">
                 <MdOutlineFormatListBulleted size={16} />
                 <Text className="menu-item_text" value={'Charts'} />
