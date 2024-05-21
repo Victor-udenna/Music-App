@@ -49,7 +49,7 @@ const Sidebar = () => {
               location.pathname === '/favourites' ? 'active' : ''
             }`}
           >
-            <NavLink to={'/favourite  s'}>
+            <NavLink to={'/favourites'}>
               <div className="sidebar-menu__item">
                 <IoMdHeart size={16} />
                 <Text className="menu-item_text" value={'Favourites'} />
