@@ -1,6 +1,8 @@
+import NotFoundTemplate from "../templates/NotFoundTemplate/NotFoundTemplate"
+
 const NotFound = () => {
   return (
-    <div>NotFound</div>
+    <NotFoundTemplate/>
   )
 }
 

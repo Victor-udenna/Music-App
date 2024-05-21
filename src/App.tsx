@@ -8,6 +8,7 @@ import ErrorUi from './Components/templates/ErrorUi/ErrorUi'
 
 const Search = lazy(() => import('./Components/pages/Search'))
 const Home = lazy(() => import('./Components/pages/Home'))
+const NotFound = lazy(()=> import("./Components/pages/NotFound"))
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/search" element={<Search />} />
+              <Route path="/*" element={<NotFound />} />
             </Routes>
           </MainLayout>
         </ErrorBoundary>
